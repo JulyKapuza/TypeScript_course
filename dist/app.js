@@ -1,11 +1,18 @@
 "use strict";
-const button = document.querySelector("button");
-const input1 = document.getElementById("num1");
-const input2 = document.getElementById("num2");
-function add(num1, num2) {
-    return num1 + num2;
+var Role;
+(function (Role) {
+    Role[Role["ADMIN"] = 0] = "ADMIN";
+    Role[Role["READ_ONLY"] = 1] = "READ_ONLY";
+    Role[Role["AUTOR"] = 2] = "AUTOR";
+})(Role || (Role = {}));
+const person1 = {
+    name: 'Juliia',
+    age: 29,
+    hobbies: ['Books', "Cooking"],
+    role: Role.ADMIN
+};
+console.log(person1);
+if (person1.role === Role.ADMIN) {
+    console.log('is admin');
 }
-button.addEventListener("click", function () {
-    console.log(add(+input1.value, +input2.value));
-});
 //# sourceMappingURL=app.js.map
