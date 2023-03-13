@@ -1,9 +1,9 @@
 "use strict";
 const person = {
-    name: 'Juliia',
+    name: "Juliia",
     age: 29,
-    hobbies: ['Books', "Cooking"],
-    role: [2, 'manager']
+    hobbies: ["Books", "Cooking"],
+    role: [2, "manager"],
 };
 console.log(person);
 for (const hobby of person.hobbies) {
