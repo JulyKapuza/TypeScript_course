@@ -1,24 +1,14 @@
 "use strict";
-const e1 = {
-    name: "Jul",
-    privileges: ["create-server"],
-    startDate: new Date(),
-};
-function add1(a, b) {
-    if (typeof a === "string" || typeof b === "string") {
-        return a.toString() + b.toString();
+function moveAnimal(animal) {
+    let speed;
+    switch (animal.type) {
+        case "bird":
+            speed = animal.flyingSpeed;
+            break;
+        case "hourse":
+            speed = animal.runningSpeed;
     }
-    return a + b;
+    console.log("Moving at speed: " + speed);
 }
-function printEmployeeInfo(emp) {
-    console.log("Name: " + emp.name);
-    if ("privileges" in emp) {
-        console.log("Privileges: " + emp.privileges);
-    }
-    if ("startDate" in emp) {
-        console.log("startDate: " + emp.startDate);
-    }
-}
-printEmployeeInfo(e1);
-printEmployeeInfo({ name: 'Bob', startDate: new Date() });
+moveAnimal({ type: "bird", flyingSpeed: 25 });
 //# sourceMappingURL=app.js.map

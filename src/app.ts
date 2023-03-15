@@ -1,50 +1,28 @@
-// intersection types
+//pattern descriminated Union
+// маємо одну спільну властивість type яку можемо використовувати для перевірки
 
-type Admin = {
-  name: string;
-  privileges: string[];
-};
-
-type Employee = {
-  name: string;
-  startDate: Date;
-};
-
-type ElevatedEmployee = Admin & Employee;
-
-const e1: ElevatedEmployee = {
-  name: "Jul",
-  privileges: ["create-server"],
-  startDate: new Date(),
-};
-
-type Combine = string | number; //union type
-type Numeric = number | boolean;
-
-type Universal = Combine & Numeric; // type number перетин на ньому
-
-function add1(a: Combine, b: Combine) {
-  if (typeof a === "string" || typeof b === "string") {
-    // type guard
-    return a.toString() + b.toString();
-  }
-  return a + b;
+interface Bird {
+  type: "bird";
+  flyingSpeed: number;
 }
 
-type UnknownEmployeeInfo = Employee | Admin;
-
-function printEmployeeInfo(emp: UnknownEmployeeInfo) {
-  console.log("Name: " + emp.name);
-  if ("privileges" in emp) {
-    // перевірка на наявність властивості
-    console.log("Privileges: " + emp.privileges);
-  }
-
-  if ("startDate" in emp) {
-    // перевірка на наявність властивості
-    console.log("startDate: " + emp.startDate);
-  }
+interface Hourse {
+  type: "hourse";
+  runningSpeed: number;
 }
-printEmployeeInfo(e1); // ok console.log with privileges
 
-printEmployeeInfo({ name: 'Bob', startDate: new Date()}) // ok console.log without privileges
+type Animal = Bird | Hourse;
+
+function moveAnimal(animal: Animal) {
+  let speed;
+  switch (animal.type) {
+    case "bird":
+      speed = animal.flyingSpeed;
+      break;
+    case "hourse":
+      speed = animal.runningSpeed;
+  }
+  console.log("Moving at speed: " + speed);
+}
+
+moveAnimal({ type: "bird", flyingSpeed: 25 });
