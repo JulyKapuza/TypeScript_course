@@ -1,11 +1,9 @@
 // два варінти можливі
-const button1 = document.querySelector('button')!
+const button1 = document.querySelector("button")!;
 
-button1.addEventListener('click', () => {
-    console.log("Clicking")
-})
-
-
+button1.addEventListener("click", () => {
+  console.log("Clicking");
+});
 
 //  const button1 = document.querySelector('button')
 

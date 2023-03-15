@@ -16,7 +16,7 @@ function combine(
     result = input1.toString() + input2.toString();
   }
   return result;
-} 
+}
 
 const combineAge = combine("30", "26", "as-number");
 console.log(combineAge);

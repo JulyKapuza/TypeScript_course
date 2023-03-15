@@ -35,8 +35,8 @@ class ITDepartment extends Department {
 }
 
 class AccountingDepartment extends Department {
-    private lastReport: string;
-    private static instance: AccountingDepartment;
+  private lastReport: string;
+  private static instance: AccountingDepartment;
 
   get mostRecentReport() {
     if (this.lastReport) {
@@ -52,18 +52,19 @@ class AccountingDepartment extends Department {
     this.addReports(value);
   }
 
- private constructor(id: string, private reports: string[]) { // private constructor одноелементний шаблон один екземпляр визначеного класу, коли потрібен рівно один об'єкт на основі класу
+  private constructor(id: string, private reports: string[]) {
+    // private constructor одноелементний шаблон один екземпляр визначеного класу, коли потрібен рівно один об'єкт на основі класу
     super(id, "Accounting");
     this.lastReport = reports[0];
+  }
+
+  static getIntance() {
+    if (AccountingDepartment.instance) {
+      return this.instance;
     }
-    
-    static getIntance() {
-        if (AccountingDepartment.instance) {
-            return this.instance
-        }
-        this.instance = new AccountingDepartment('d3', [])
-        return this.instance
-    }// практика не часто
+    this.instance = new AccountingDepartment("d3", []);
+    return this.instance;
+  } // практика не часто
 
   describe() {
     console.log("Accounting Department -ID: " + this.id);

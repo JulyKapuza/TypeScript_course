@@ -8,11 +8,11 @@ combineValues = add;
 
 console.log(add(8, 7));
 
-function addAndHandle(n1: number, n2: number, cb: (num:number)=>void) {
+function addAndHandle(n1: number, n2: number, cb: (num: number) => void) {
   const result = n1 + n2;
-  cb(result) ;
+  cb(result);
 }
 
 addAndHandle(10, 15, (result) => {
-  console.log(result)
-})
+  console.log(result);
+});

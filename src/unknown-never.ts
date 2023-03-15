@@ -12,7 +12,7 @@ if (typeof userInput === "string") {
   userName = userInput;
 }
 
-// never Це коли функція ніколи не закінчується та нічого не повертає. 
+// never Це коли функція ніколи не закінчується та нічого не повертає.
 function generateError(message: string, code: number): never {
   throw { message: message, errorCode: code };
 }
