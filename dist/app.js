@@ -1,14 +1,6 @@
 "use strict";
-function moveAnimal(animal) {
-    let speed;
-    switch (animal.type) {
-        case "bird":
-            speed = animal.flyingSpeed;
-            break;
-        case "hourse":
-            speed = animal.runningSpeed;
-    }
-    console.log("Moving at speed: " + speed);
+const userInputElement = document.getElementById('user-input');
+if (userInputElement) {
+    userInputElement.value = 'Hi there!';
 }
-moveAnimal({ type: "bird", flyingSpeed: 25 });
 //# sourceMappingURL=app.js.map

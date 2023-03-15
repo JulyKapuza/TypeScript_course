@@ -1,28 +1,13 @@
-//pattern descriminated Union
-// маємо одну спільну властивість type яку можемо використовувати для перевірки
+// const userInputElement = <HTMLInputElement>document.getElementById('user-input')!; // перший варіант
+// const userInputElement = document.getElementById('user-input')! as HTMLInputElement; // використовуємо ! коли впевнені, що не вернемо 0
 
-interface Bird {
-  type: "bird";
-  flyingSpeed: number;
+// userInputElement.value = 'Hi there!'
+
+// альтернатива використання ! з перевіркою
+
+const userInputElement = document.getElementById('user-input')
+
+if (userInputElement) {
+  (userInputElement as HTMLInputElement).value = 'Hi there!'
 }
 
-interface Hourse {
-  type: "hourse";
-  runningSpeed: number;
-}
-
-type Animal = Bird | Hourse;
-
-function moveAnimal(animal: Animal) {
-  let speed;
-  switch (animal.type) {
-    case "bird":
-      speed = animal.flyingSpeed;
-      break;
-    case "hourse":
-      speed = animal.runningSpeed;
-  }
-  console.log("Moving at speed: " + speed);
-}
-
-moveAnimal({ type: "bird", flyingSpeed: 25 });
