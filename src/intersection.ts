@@ -31,6 +31,11 @@ function add1(a: Combine, b: Combine) {
   return a + b;
 }
 
+// const result = add(1, 5)
+
+// const result = add1('July', " Kap") as string;
+// result.split(' ');
+
 type UnknownEmployeeInfo = Employee | Admin;
 
 function printEmployeeInfo(emp: UnknownEmployeeInfo) {
@@ -47,4 +52,4 @@ function printEmployeeInfo(emp: UnknownEmployeeInfo) {
 }
 printEmployeeInfo(e1); // ok console.log with privileges
 
-printEmployeeInfo({ name: 'Bob', startDate: new Date()}) // ok console.log without privileges
+printEmployeeInfo({ name: "Bob", startDate: new Date() }); // ok console.log without privileges

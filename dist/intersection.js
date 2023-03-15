@@ -20,5 +20,5 @@ function printEmployeeInfo(emp) {
     }
 }
 printEmployeeInfo(e1);
-printEmployeeInfo({ name: 'Bob', startDate: new Date() });
+printEmployeeInfo({ name: "Bob", startDate: new Date() });
 //# sourceMappingURL=intersection.js.map
