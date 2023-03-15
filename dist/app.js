@@ -1,15 +1,24 @@
 "use strict";
-class Person {
-    constructor(n) {
-        this.age = 30;
-        this.name = n;
+const e1 = {
+    name: "Jul",
+    privileges: ["create-server"],
+    startDate: new Date(),
+};
+function add1(a, b) {
+    if (typeof a === "string" || typeof b === "string") {
+        return a.toString() + b.toString();
     }
-    greet(phrase) {
-        console.log(phrase + " " + this.name);
+    return a + b;
+}
+function printEmployeeInfo(emp) {
+    console.log("Name: " + emp.name);
+    if ("privileges" in emp) {
+        console.log("Privileges: " + emp.privileges);
+    }
+    if ("startDate" in emp) {
+        console.log("startDate: " + emp.startDate);
     }
 }
-let user1;
-user1 = new Person("Max");
-user1.greet("Hi there - I am");
-console.log(user1);
+printEmployeeInfo(e1);
+printEmployeeInfo({ name: 'Bob', startDate: new Date() });
 //# sourceMappingURL=app.js.map

@@ -1,47 +1,50 @@
-/* -------------------------------------------------------------------------- */
-/*                                  Interface                                 */
-/* -------------------------------------------------------------------------- */
-// interface для опису структури об'єкта/ функції
+// intersection types
 
-interface Named {
-  readonly name: string;
-}
-interface Greetable extends Named {
-  greet(phrase: string): void;
-}
-
-class Person implements Greetable {
+type Admin = {
   name: string;
-  age = 30;
+  privileges: string[];
+};
 
-  constructor(n: string) {
-    this.name = n;
+type Employee = {
+  name: string;
+  startDate: Date;
+};
+
+type ElevatedEmployee = Admin & Employee;
+
+const e1: ElevatedEmployee = {
+  name: "Jul",
+  privileges: ["create-server"],
+  startDate: new Date(),
+};
+
+type Combine = string | number; //union type
+type Numeric = number | boolean;
+
+type Universal = Combine & Numeric; // type number перетин на ньому
+
+function add1(a: Combine, b: Combine) {
+  if (typeof a === "string" || typeof b === "string") {
+    // type guard
+    return a.toString() + b.toString();
   }
-  greet(phrase: string) {
-    console.log(phrase + " " + this.name);
-  }
+  return a + b;
 }
 
-let user1: Greetable;
+type UnknownEmployeeInfo = Employee | Admin;
 
-user1 = new Person("Max");
-user1.greet("Hi there - I am");
-console.log(user1);
+function printEmployeeInfo(emp: UnknownEmployeeInfo) {
+  console.log("Name: " + emp.name);
+  if ("privileges" in emp) {
+    // перевірка на наявність властивості
+    console.log("Privileges: " + emp.privileges);
+  }
 
-// interface Person {
-//     name: string;
-//     age: number;
+  if ("startDate" in emp) {
+    // перевірка на наявність властивості
+    console.log("startDate: " + emp.startDate);
+  }
+}
+printEmployeeInfo(e1); // ok console.log with privileges
 
-//     greet(phrase:string): void;
-// }
-
-// let user1: Person
-
-// user1 = {
-//     name: "Julia",
-//     age: 29,
-//     greet(phrase: string) {
-//         console.log(phrase + ' ' + this.name)
-//     }
-// }
-// user1.greet('Hi there - I am')
+printEmployeeInfo({ name: 'Bob', startDate: new Date()}) // ok console.log without privileges
